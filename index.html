@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Barbearia Garagem | Seu estilo começa aqui</title>
+  <meta
+    name="description"
+    content="Barbearia Garagem em Americana - SP. Cortes masculinos, barba, acabamento e muito estilo."
+  />
+  <meta name="theme-color" content="#111111" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --black: #0c0c0c;
+      --black-soft: #151515;
+      --gray-dark: #202020;
+      --gray: #8e8e8e;
+      --gray-light: #d8d8d8;
+      --white: #ffffff;
+      --red: #d71920;
+      --red-dark: #a80f15;
+      --border: rgba(255, 255, 255, 0.1);
+      --container: 1180px;
+      --radius: 4px;
+      --transition: 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      color: var(--white);
+      background: var(--black);
+      font-family: "Inter", sans-serif;
+      line-height: 1.6;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .container {
+      width: min(100% - 40px, var(--container));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 88px 0;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--red);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 28px;
+      height: 2px;
+      background: var(--red);
+      content: "";
+    }
+
+    .section-title {
+      margin-top: 12px;
+      color: var(--white);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: clamp(2.4rem, 7vw, 4rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    .section-text {
+      max-width: 600px;
+      margin-top: 20px;
+      color: var(--gray);
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 24px;
+      border: 1px solid var(--red);
+      border-radius: var(--radius);
+      background: var(--red);
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      transition: var(--transition);
+    }
+
+    .button:hover {
+      background: var(--red-dark);
+      border-color: var(--red-dark);
+      transform: translateY(-3px);
+    }
+
+    .button-outline {
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .button-outline:hover {
+      background: var(--white);
+      border-color: var(--white);
+      color: var(--black);
+    }
+
+    /* Header */
+    .header {
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      width: 100%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .nav {
+      display: flex;
+      min-height: 76px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      line-height: 0.8;
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      display: block;
+      color: var(--red);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-align: center;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 28px;
+      color: var(--gray-light);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .menu-toggle {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      background: transparent;
+      color: var(--white);
+      font-size: 1.5rem;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      display: flex;
+      min-height: 700px;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.68) 48%, rgba(0, 0, 0, 0.35) 100%),
+        url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+    }
+
+    .hero-content {
+      max-width: 720px;
+      padding-top: 70px;
+    }
+
+    .hero h1 {
+      margin-top: 18px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: clamp(4.4rem, 17vw, 9rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.8;
+      text-transform: uppercase;
+    }
+
+    .hero h1 span {
+      color: var(--red);
+    }
+
+    .hero-description {
+      max-width: 510px;
+      margin: 28px 0;
+      color: var(--gray-light);
+      font-size: 1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .scroll-label {
+      position: absolute;
+      bottom: 28px;
+      left: 20px;
+      color: var(--gray);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* Sobre */
+    .about {
+      background: var(--black-soft);
+    }
+
+    .about-grid {
+      display: grid;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+      min-height: 390px;
+    }
+
+    .about-image img {
+      height: 100%;
+      min-height: 390px;
+      filter: grayscale(100%);
+    }
+
+    .about-image::after {
+      position: absolute;
+      right: -12px;
+      bottom: -12px;
+      z-index: 0;
+      width: 70%;
+      height: 80%;
+      border: 2px solid var(--red);
+      content: "";
+    }
+
+    .about-image img {
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .about-copy p {
+      margin-top: 20px;
+      color: var(--gray);
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 35px;
+    }
+
+    .highlight {
+      border-top: 2px solid var(--red);
+      padding-top: 12px;
+    }
+
+    .highlight strong {
+      display: block;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 1.35rem;
+      text-transform: uppercase;
+    }
+
+    .highlight span {
+      color: var(--gray);
+      font-size: 0.75rem;
+    }
+
+    /* Serviços */
+    .services {
+      background: #101010;
+    }
+
+    .services-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 42px;
+    }
+
+    .service-card {
+      display: flex;
+      min-height: 180px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 25px;
+      border: 1px solid var(--border);
+      background: var(--black-soft);
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
+      border-color: var(--red);
+      transform: translateY(-5px);
+    }
+
+    .service-number {
+      color: var(--red);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .service-card h3 {
+      margin-top: 20px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+    }
+
+    .service-card p {
+      color: var(--gray);
+      font-size: 0.85rem;
+    }
+
+    /* Galeria */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 42px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      min-height: 180px;
+      padding: 0;
+      background: var(--gray-dark);
+    }
+
+    .gallery-item:first-child {
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      height: 100%;
+      min-height: 180px;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    /* Avaliações */
+    .reviews {
+      background: var(--black-soft);
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .rating strong {
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 3.3rem;
+      line-height: 1;
+    }
+
+    .stars {
+      color: #f5b400;
+      letter-spacing: 3px;
+    }
+
+    .rating small {
+      display: block;
+      color: var(--gray);
+      font-size: 0.75rem;
+    }
+
+    .review-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 36px;
+    }
+
+    .review-card {
+      padding: 25px;
+      border: 1px solid var(--border);
+      background: #111;
+    }
+
+    .review-card p {
+      color: var(--gray-light);
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    .review-author {
+      display: block;
+      margin-top: 20px;
+      color: var(--red);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .review-notice {
+      margin-top: 22px;
+      color: var(--gray);
+      font-size: 0.75rem;
+    }
+
+    /* Localização */
+    .location-grid {
+      display: grid;
+      gap: 35px;
+      align-items: stretch;
+    }
+
+    .location-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 22px;
+      margin: 30px 0;
+      list-style: none;
+    }
+
+    .info-list li {
+      display: flex;
+      gap: 15px;
+      color: var(--gray-light);
+    }
+
+    .info-list strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--white);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .info-list span {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .info-icon {
+      color: var(--red);
+      font-size: 1.2rem;
+    }
+
+    .map-placeholder {
+      display: grid;
+      min-height: 330px;
+      place-items: center;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(rgba(20, 20, 20, 0.86), rgba(20, 20, 20, 0.86)),
+        url("https://images.unsplash.com/photo-1524666041070-9c8763b7c8f7?auto=format&fit=crop&w=1000&q=80")
+        center/cover;
+      color: var(--gray);
+      text-align: center;
+    }
+
+    .map-placeholder strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--white);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 2rem;
+      text-transform: uppercase;
+    }
+
+    /* CTA */
+    .contact-cta {
+      background:
+        linear-gradient(90deg, rgba(215, 25, 32, 0.93), rgba(120, 10, 15, 0.88)),
+        url("https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1600&q=80")
+        center/cover;
+      text-align: center;
+    }
+
+    .contact-cta .eyebrow {
+      justify-content: center;
+      color: var(--white);
+    }
+
+    .contact-cta .eyebrow::before {
+      background: var(--white);
+    }
+
+    .contact-cta h2 {
+      max-width: 720px;
+      margin: 15px auto 25px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .contact-cta .button {
+      background: var(--white);
+      border-color: var(--white);
+      color: var(--red);
+    }
+
+    .contact-cta .button:hover {
+      background: var(--black);
+      border-color: var(--black);
+      color: var(--white);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 55px 0 25px;
+      background: #080808;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 32px;
+    }
+
+    .footer-column h3 {
+      margin-bottom: 15px;
+      color: var(--white);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .footer-column p,
+    .footer-column a {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--gray);
+      font-size: 0.85rem;
+    }
+
+    .footer-column a:hover {
+      color: var(--red);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--gray);
+      font-size: 0.72rem;
+    }
+
+    /* Modal da galeria */
+    .modal {
+      position: fixed;
+      z-index: 100;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.92);
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal img {
+      width: auto;
+      max-width: 100%;
+      max-height: 88vh;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: transparent;
+      color: var(--white);
+      font-size: 2rem;
+    }
+
+    /* Desktop */
+    @media (min-width: 700px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .review-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .about-grid,
+      .location-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1.4fr 1fr 1fr;
+        grid-auto-rows: 210px;
+      }
+
+      .gallery-item:first-child {
+        grid-row: span 2;
+      }
+    }
+
+    @media (max-width: 699px) {
+      .nav-links.active {
+        position: absolute;
+        top: 76px;
+        right: 20px;
+        left: 20px;
+        display: grid;
+        gap: 0;
+        padding: 10px;
+        border: 1px solid var(--border);
+        background: var(--black-soft);
+      }
+
+      .nav-links.active a {
+        padding: 15px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.active a:last-child {
+        border-bottom: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="logo" href="#inicio" aria-label="Barbearia Garagem - início">
+        Garagem
+        <span>Barbearia</span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        ☰
+      </button>
+
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#avaliacoes">Avaliações</a>
+        <a href="#localizacao">Localização</a>
+        <a href="#contato">Agendar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-content">
+        <span class="eyebrow">Americana — SP</span>
+        <h1>Seu estilo<br /><span>começa aqui.</span></h1>
+        <p class="hero-description">
+          Um espaço urbano, autêntico e feito para quem valoriza presença,
+          cuidado e um corte que combina com seu estilo.
+        </p>
+
+        <div class="hero-actions">
+          <!-- Substituir o número pelo WhatsApp oficial -->
+          <a class="button" href="https://wa.me/5519989967747" target="_blank">
+            Agendar horário
+          </a>
+          <a class="button button-outline" href="#servicos">
+            Ver serviços
+          </a>
+        </div>
+      </div>
+
+      <span class="scroll-label">Role para explorar ↓</span>
+    </section>
+
+    <section class="section about" id="sobre">
+      <div class="container about-grid">
+        <div class="about-image">
+          <!-- Substituir pela foto real da barbearia -->
+          <img
+            src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1000&q=85"
+            alt="Ambiente de barbearia masculina"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="about-copy">
+          <span class="eyebrow">Sobre a Garagem</span>
+          <h2 class="section-title">Mais que um corte.<br />Uma experiência.</h2>
+          <p>
+            A Barbearia Garagem foi pensada para ser um ponto de encontro entre
+            estilo, personalidade e qualidade. Um ambiente com atitude urbana,
+            atendimento próximo e atenção aos detalhes.
+          </p>
+          <p>
+            O objetivo é simples: fazer você sair daqui se sentindo ainda
+            melhor do que quando chegou.
+          </p>
+
+          <div class="about-highlights">
+            <div class="highlight">
+              <strong>Estilo</strong>
+              <span>Visual personalizado</span>
+            </div>
+            <div class="highlight">
+              <strong>Cuidado</strong>
+              <span>Atenção aos detalhes</span>
+            </div>
+            <div class="highlight">
+              <strong>Presença</strong>
+              <span>Experiência completa</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="servicos">
+      <div class="container">
+        <span class="eyebrow">O que fazemos</span>
+        <h2 class="section-title">Serviços</h2>
+        <p class="section-text">
+          Escolha o serviço ideal para o seu momento. Os valores podem ser
+          adicionados posteriormente conforme a tabela oficial da barbearia.
+        </p>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <span class="service-number">01</span>
+            <h3>Corte de cabelo</h3>
+            <p>Do degradê ao social, o corte certo para o seu estilo.</p>
+            <strong class ="service-price">R$35,00</strong>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">02</span>
+            <h3>Barba</h3>
+            <p>Modelagem, acabamento e cuidado para valorizar seu rosto.</p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">03</span>
+            <h3>Corte + barba</h3>
+            <p>A combinação completa para renovar o visual.</p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">04</span>
+            <h3>Acabamento</h3>
+            <p>Detalhes que fazem toda a diferença no resultado final.</p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">05</span>
+            <h3>Infantil</h3>
+            <p>Atendimento pensado para os pequenos com tranquilidade.</p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">06</span>
+            <h3>Corte + sobrancelha</h3>
+            <p>Do degradê ao social, com sobrancelha para completar o visual.</p>
+          </article>
+          
+          <article class="service-card">
+            <span class="service-number">07</span>
+            <h3>Outros serviçoes</h3>
+            <p>Consulte a equipe para conhecer todas as opcões disponiveis.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gallery" id="galeria">
+      <div class="container">
+        <span class="eyebrow">Nosso trabalho</span>
+        <h2 class="section-title">Galeria</h2>
+        <p class="section-text">
+          Fotos reais dos cortes, da equipe e do ambiente poderão ser inseridas
+          nesta área.
+        </p>
+
+        <div class="gallery-grid">
+          <button class="gallery-item" aria-label="Ampliar imagem">
+            <img
+              src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1000&q=85"
+              alt="Corte masculino em barbearia"
+              loading="lazy"
+            />
+          </button>
+
+          <button class="gallery-item" aria-label="Ampliar imagem">
+            <img
+              src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=800&q=85"
+              alt="Barbeiro trabalhando"
+              loading="lazy"
+            />
+          </button>
+
+          <button class="gallery-item" aria-label="Ampliar imagem">
+            <img
+              src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=800&q=85"
+              alt="Detalhe de corte masculino"
+              loading="lazy"
+            />
+          </button>
+
+          <button class="gallery-item" aria-label="Ampliar imagem">
+            <img
+              src="https://images.unsplash.com/photo-1512690459411-b9245AED0b8?auto=format&fit=crop&w=800&q=85"
+              alt="Ambiente interno de barbearia"
+              loading="lazy"
+            />
+          </button>
+
+          <button class="gallery-item" aria-label="Ampliar imagem">
+            <img
+              src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=800&q=85"
+              alt="Barbeiro realizando acabamento"
+              loading="lazy"
+            />
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reviews" id="avaliacoes">
+      <div class="container">
+        <span class="eyebrow">Quem já passou por aqui</span>
+        <h2 class="section-title">Avaliações</h2>
+
+        <div class="rating">
+          <strong>4,8</strong>
+          <div>
+            <div class="stars" aria-label="4,8 de 5 estrelas">★★★★★</div>
+            <small>Nota geral apresentada como proposta</small>
+          </div>
+        </div>
+
+        <div class="review-grid">
+          <article class="review-card">
+            <p>“Avaliação real do cliente será inserida aqui.”</p>
+            <span class="review-author">Nome do cliente</span>
+          </article>
+
+          <article class="review-card">
+            <p>“Este espaço está preparado para receber depoimentos reais.”</p>
+            <span class="review-author">Nome do cliente</span>
+          </article>
+
+          <article class="review-card">
+            <p>“Substitua este conteúdo pelas avaliações oficiais.”</p>
+            <span class="review-author">Nome do cliente</span>
+          </article>
+        </div>
+
+        <p class="review-notice">
+          As avaliações exibidas acima são apenas exemplos de layout. Inserir
+          avaliações reais antes da publicação.
+        </p>
+      </div>
+    </section>
+
+    <section class="section location" id="localizacao">
+      <div class="container location-grid">
+        <div class="location-details">
+          <span class="eyebrow">Onde estamos</span>
+          <h2 class="section-title">Visite a<br />Garagem.</h2>
+
+          <ul class="info-list">
+            <li>
+              <span class="info-icon">⌖</span>
+              <div>
+                <strong>Endereço</strong>
+                <span>R. Henrique Bassetto, 611<br />Vila Praia Azul, Americana - SP</span>
+              </div>
+            </li>
+
+            <li>
+              <span class="info-icon">◷</span>
+              <div>
+                <strong>Horário de funcionamento</strong>
+                <span>Segunda a sábado, das 09:00 às 20:00</span>
+              </div>
+            </li>
+
+            <li>
+              <span class="info-icon">☎</span>
+              <div>
+                <strong>Telefone</strong>
+                <span>+55 (19) 98996-7747</span>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Substituir pelo link oficial do Google Maps -->
+          <a
+            class="button"
+            href="https://www.google.com/maps/search/?api=1&query=R.+Henrique+Bassetto,+611,+Americana+-+SP"
+            target="_blank"
+          >
+            Como chegar
+          </a>
+        </div>
+
+       <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.6563446637656!2d-47.2429054249046!3d-22.7410111793721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c897f12f74e92d:0x2e81476b8106f6c6!2sBarbearia%20Garagem!5e0!3m2!1spt-BR!2sbr!4v1788571214720!5m2!1spt-BR!2sbr"
+    width="600"
+    height="450"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="strict-origin-when-cross-origin">
+</iframe>
+      </div>
+    </section>
+
+    <section class="section contact-cta" id="contato">
+      <div class="container">
+        <span class="eyebrow">Pronto para mudar o visual?</span>
+        <h2>Seu próximo corte começa com uma mensagem.</h2>
+
+        <!-- Substituir o número pelo WhatsApp oficial -->
+        <a class="button" href="https://wa.me/5519989967747" target="_blank">
+          Agendar pelo WhatsApp
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <a class="logo" href="#inicio">
+            Garagem
+            <span>Barbearia</span>
+          </a>
+          <p style="margin-top: 22px;">
+            Seu estilo começa aqui.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h3>Links rápidos</h3>
+          <a href="#sobre">Sobre</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#galeria">Galeria</a>
+          <a href="#contato">Agendamento</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>Contato</h3>
+          <a href="https://wa.me/5519989967747" target="_blank">WhatsApp</a>
+          <a href="tel:+5519989967747">Telefone a confirmar</a>
+          <a href="#" target="_blank">Instagram a confirmar</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>Endereço</h3>
+          <p>R. Henrique Bassetto, 611</p>
+          <p>Vila Praia Azul</p>
+          <p>Americana - SP</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2025 Barbearia Garagem</span>
+        <span>Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Imagem ampliada">
+    <button class="modal-close" aria-label="Fechar imagem">×</button>
+    <img src="" alt="" />
+  </div>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("active");
+
+      menuToggle.setAttribute("aria-expanded", isOpen);
+      menuToggle.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
+      menuToggle.textContent = isOpen ? "×" : "☰";
+    });
+
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menu");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    const modal = document.querySelector(".modal");
+    const modalImage = modal.querySelector("img");
+    const modalClose = modal.querySelector(".modal-close");
+
+    document.querySelectorAll(".gallery-item").forEach((item) => {
+      item.addEventListener("click", () => {
+        const image = item.querySelector("img");
+
+        modalImage.src = image.src;
+        modalImage.alt = image.alt;
+        modal.classList.add("active");
+        document.body.classList.add("modal-open");
+      });
+    });
+
+    function closeModal() {
+      modal.classList.remove("active");
+      document.body.classList.remove("modal-open");
+      modalImage.src = "";
+    }
+
+    modalClose.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeModal();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeModal();
+    });
+  </script>
+</body>
+</html>
